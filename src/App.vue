@@ -1,17 +1,58 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div class="container is-fluid">
+      <div class="columns is-centered is-multiline">
+        <div class="column is-one-third has-background-black-ter has-text-white">
+          <h1 class="title is-bold has-text-white">HELL LET LOOSE ARTILLERY CALCULATOR</h1>
+          <hr>
+          <label class="label has-text-white">Meters</label>
+          <input class="input" v-model="inputData">
+        </div>
+      </div>
+
+      <div class="columns is-centered">
+        <div class="column is-one-third has-background-grey-light">
+          <span class="is-bold title">{{ result }} MIL</span>
+
+        </div>
+      </div>
+      <button class="button is-danger" @click="getDistance">Calculate</button>
+    </div>
+    <br><br>
+    <div class="columns is-centered">
+      <div class="column is-one-third">
+        The used formula is:<br><br> <span class="is-bold subtitle">978 - (n / 100 - 1) * 24</span>
+
+      </div>
+    </div>
   </div>
+
+
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+
+  },
+  data: function () {
+    return {
+      inputData: 0,
+      result: "",
+    }
+  },
+  methods: {
+    getDistance() {
+      this.result = this.calculateDistance(this.inputData);
+    },
+
+    calculateDistance(n) {
+      console.log(n)
+      return (978 - (n / 100 - 1) * 24).toFixed(2)
+    }
   }
 }
 </script>
