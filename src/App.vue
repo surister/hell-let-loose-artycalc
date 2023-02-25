@@ -19,7 +19,7 @@
         <div class="column is-narrow p-0 pt-2">
           <div class="buttons has-text-centered">
         <button class="button is-success is-fullwidth" @click="getDistance">Calculate</button>
-        <button class="button is-danger is-fullwidth" @click="getDistance">Clear</button>
+        <button class="button is-danger is-fullwidth" @click="inputData = 0">Clear</button>
       </div>
         </div>
       </div>
