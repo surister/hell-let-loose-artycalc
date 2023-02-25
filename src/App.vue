@@ -6,27 +6,31 @@
           <h1 class="title is-bold has-text-white">HELL LET LOOSE ARTILLERY CALCULATOR</h1>
           <hr>
           <label class="label has-text-white">Meters</label>
-          <input class="input" v-model="inputData">
+          <input class="input" v-model="inputData" @input="getDistance">
         </div>
       </div>
 
       <div class="columns is-centered">
         <div class="column is-one-third has-background-grey-light">
           <span class="is-bold title">{{ result }} MIL</span>
-
         </div>
       </div>
-      <button class="button is-danger" @click="getDistance">Calculate</button>
+      <div class="columns is-centered">
+        <div class="column is-narrow p-0 pt-2">
+          <div class="buttons has-text-centered">
+        <button class="button is-success is-fullwidth" @click="getDistance">Calculate</button>
+        <button class="button is-danger is-fullwidth" @click="getDistance">Clear</button>
+      </div>
+        </div>
+      </div>
     </div>
     <br><br>
     <div class="columns is-centered">
       <div class="column is-one-third">
         The used formula is:<br><br> <span class="is-bold subtitle">978 - (n / 100 - 1) * 24</span>
-
       </div>
     </div>
   </div>
-
 
 </template>
 
@@ -40,7 +44,7 @@ export default {
   },
   data: function () {
     return {
-      inputData: 0,
+      inputData: null,
       result: "",
     }
   },
@@ -50,7 +54,7 @@ export default {
     },
 
     calculateDistance(n) {
-      console.log(n)
+      if (isNaN(n)) return 0;
       return (978 - (n / 100 - 1) * 24).toFixed(2)
     }
   }
