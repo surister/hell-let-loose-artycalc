@@ -1,16 +1,17 @@
-frontend:
-  container_name: hell.surister.dev
-  image: nginx
-  restart: unless-stopped
-  networks:
-    - proxy
-  ports:
-    - 80
-  environment:
-    - VIRTUAL_HOST=hell.surister.dev
-    - NGINX_HOST=hell.surister.dev
-  volumes:
-    - ./dist/:/usr/share/nginx/html
+services:
+  frontend:
+    container_name: hell.surister.dev
+    image: nginx
+    restart: unless-stopped
+    networks:
+      - proxy
+    ports:
+      - 80
+    environment:
+      - VIRTUAL_HOST=hell.surister.dev
+      - NGINX_HOST=hell.surister.dev
+    volumes:
+      - ./dist/:/usr/share/nginx/html
 
 networks:
   proxy:
